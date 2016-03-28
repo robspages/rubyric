@@ -1,0 +1,63 @@
+@import 'bourbon';
+@import 'base/base';
+@import 'neat';
+
+nav
+{
+	background: $base-border-color; 
+	height: 1.8em; 
+	padding: .2em 2em; 
+	margin: 0;
+	margin-bottom: 2em; 
+
+	ul
+	{
+		li
+		{
+			color: $base-background-color;
+			display: inline-block;
+			a, a:visited
+			{
+			  color: $base-background-color;
+			}
+			a:hover
+			{
+				color: $action-color; 
+			}
+		}
+		li:after
+		{
+				content: "|"; 
+				padding: 0 1em;
+		}
+	}
+}
+
+#main
+{
+	@include outer-container();
+
+	.one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .ten, .eleven 
+  { @include omega(12n); }
+  .one    { @include span-columns(1 of 12); }
+  .two    { @include span-columns(2 of 12); }
+  .three  { @include span-columns(3 of 12); }
+  .four   { @include span-columns(4 of 12); }
+  .five   { @include span-columns(5 of 12); }
+  .six    { @include span-columns(6 of 12); }
+  .seven  { @include span-columns(7 of 12); }
+  .eight  { @include span-columns(8 of 12); }
+  .nine   { @include span-columns(9 of 12); }
+  .ten    { @include span-columns(10 of 12); }
+  .eleven { @include span-columns(11 of 12); }
+  .all { @include fill-parent(); @include row(table); }
+
+  row
+  {
+
+  }
+  row:nth-child(odd)
+  {
+  	background: $alternate-bg-color;
+  }
+}

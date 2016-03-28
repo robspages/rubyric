@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Critera:</strong>
+  <%= @raiting.critera %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @raiting.text %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @raiting.position %>
+</p>
+
+<%= link_to 'Edit', edit_raiting_path(@raiting) %> |
+<%= link_to 'Back', raitings_path %>

@@ -61,3 +61,40 @@ nav
   	background: $alternate-bg-color;
   }
 }
+
+.ruberic_container
+{
+	.ruberic-add-raiting
+	{
+	  display:table-cell; 
+	  height: 100%; 
+	  width: 15px; 
+	}
+	.ruberic-add-criteria
+	{}
+	display: table;
+	table, tr, td { border: 1px solid $base-border-color; } 
+	.ruberic
+	{
+		width: 95%;
+		tr td 
+		{
+			vertical-align: top;
+			text-align: center;
+		}
+		td { padding: .25em; }
+	}
+	input { display: inline-block; border: none; box-shadow: none }
+	.criteria-text, .rating-text
+	{
+		width: 100%; 
+	}
+	.criteria-weight, .raiting-grade_value
+	{
+		width: 4em; 
+	}
+	.edit 
+	{
+		border: 1ps solid $base-border-color;
+	}
+}

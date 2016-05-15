@@ -69,6 +69,6 @@ class RaitingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def raiting_params
-      params.require(:raiting).permit(:critera_id, :text, :position)
+      params.require(:raiting).permit(:critera_id, :text, :grade_value, :position)
     end
 end

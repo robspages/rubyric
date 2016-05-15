@@ -1,0 +1,10 @@
+<%= f.fields_for :criteria do |crit| %>
+<div class="field">
+  <%= crit.label 'Criteria Text' %>
+  <%= crit.text_field :text %>
+</div>
+<div class="field">
+  <%= crit.label 'Criteria Weight' %>
+  <%= crit.text_field :weight %>%
+</div>
+<% end %>

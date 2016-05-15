@@ -17,7 +17,7 @@ class AssignmentsController < ApplicationController
   def new
     @assignment = Assignment.new
     @assignment.criteria.build
-    #@assignment.criteria.raitings.build
+    @assignment.criteria[0].raitings.build
   end
 
   # GET /assignments/1/edit
@@ -74,6 +74,6 @@ class AssignmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assignment_params
-      params.require(:assignment).permit(:title, :total_points, criteria_attributes:[:text, :weight, raitings_attributes:[:text,:position]])
+      params.require(:assignment).permit(:title, :total_points, criteria_attributes:[:text, :weight, raitings_attributes:[:text, :grade_value, :position]])
     end
 end

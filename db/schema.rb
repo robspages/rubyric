@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160320150152) do
+ActiveRecord::Schema.define(version: 20160328013042) do
 
   create_table "assignment_courses", force: :cascade do |t|
     t.integer  "assignment_id"
@@ -60,14 +60,15 @@ ActiveRecord::Schema.define(version: 20160320150152) do
   end
 
   create_table "raitings", force: :cascade do |t|
-    t.integer  "criteria_id"
+    t.integer  "criterium_id"
     t.string   "text"
     t.integer  "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.decimal  "grade_value"
   end
 
-  add_index "raitings", ["criteria_id"], name: "index_raitings_on_criteria_id"
+  add_index "raitings", ["criterium_id"], name: "index_raitings_on_criterium_id"
 
   create_table "rosters", force: :cascade do |t|
     t.integer  "student_id"

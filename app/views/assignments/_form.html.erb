@@ -1,4 +1,21 @@
+<script type="text/javascript">
+  function addCriteriaRow(assignment)
+  {
+
+  }
+
+  function addRaitingColumn(criteria)
+  {
+
+  }
+
+  $('document').ready(function(){
+    $rubric = $('ruberic'); 
+  }); 
+</script>
+
 <%= form_for(@assignment) do |f| %>
+  
   <% if @assignment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
@@ -10,15 +27,14 @@
       </ul>
     </div>
   <% end %>
+
   <section class="">
     <div class="eight">
-
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  
-    <%= f.label :total_points %>
-    <%= f.text_field :total_points %>
-  
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    
+      <%= f.label :total_points %>
+      <%= f.text_field :total_points %>
     </div>
     <div class="four">
       <h3>Courses with this Assignment</h3>
@@ -32,28 +48,29 @@
         </ul>
       <% end %>
     </div>
+  </section>  
+  <section class="rubric_container">
+    <table class="rubric">
+      <tbody>        
+        <% @assignment.criteria.each do |crit| %>
+          <tr>
+            <td>
+              <p><input type='text' placeholder='Criteria Text' data-criteria-id='<%= @assignment.id %>' class='criteria-text' value='<%= crit.text %>'></p>
+              <p>Weight: <input type='text' placeholder='100.0' data-criteria-id='<%= crit.id %>' class='criteria-weight' value='<%= crit.weight %>'>%</p>
+            </td>
+            <%  
+              crit.raitings.each do |r| %>
+                <td>
+                  <p><input type='text' placeholder='Raiting Text' data-criteria-id='<%= crit.id %>' data-raiting-id='<%= r.id %>' class='raiting-text' value='<%= r.text %>' /></p>
+                  <p><input type='text' data-criteria-id='<%= crit.id %>' data-raiting-id='<%= r.id %>' class='raiting-grade_value' value='<%= r.grade_value %>' placeholder='0' />pts</p>
+                </td>
+            <% 
+              end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <button class="ruberic-add-raiting"> &#9658; </button>
+    <button class="ruberic-add-critera"> &#9660; </button>
   </section>
-  <div>
-    <%= f.fields_for :criteria do |crit| %>
-      <div class="field">
-        <%= crit.label 'Criteria Text' %><br>
-        <%= crit.text_field :text %>
-      </div>
-      <div class="field">
-        <%= crit.label 'Criteria Weight' %><br>
-        <%= crit.text_field :weight %>%
-      </div>
-      <%= f.fields_for :ratings do |raiting| %>
-        <div class="field">
-          <%= raiting.label 'Raiting Text' %><br>
-          <%= raiting.text_field :text %>
-        </div>
-        <%= raiting.hidden_field :position %>
-      <% end %>
-
-    <% end %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
